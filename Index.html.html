@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>儲蓄壽險三強比較</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --pru:     #C8102E;
+  --pru-dk:  #9B0D22;
+  --aia:     #444;
+  --fwd:     #666;
+  --cream:   #FAF8F4;
+  --ink:     #1A1A1A;
+  --mid:     #555;
+  --pale:    #F0EDE8;
+  --border:  #E2DDD6;
+  --gold:    #B8962E;
+  --green:   #1A7A45;
+  --w:       #fff;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--pru);
+  padding: 36px 48px 30px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.h-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.h-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+}
+.h-title em { font-style: normal; color: #FFD0D8; }
+.h-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 8px;
+  font-weight: 300;
+}
+.h-badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 12px 18px;
+  text-align: center;
+  white-space: nowrap;
+}
+.h-badge-label { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.h-badge-value { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: #fff; }
+
+/* ── PREMIUM EXAMPLE ── */
+.example-bar {
+  background: var(--ink);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+}
+.ex-label {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+}
+.ex-label-text {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
+}
+.ex-item {
+  padding: 16px 20px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ex-company {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.ex-company.pru { color: #FF8FA0; }
+.ex-company.aia { color: rgba(255,255,255,0.4); }
+.ex-company.fwd { color: rgba(255,255,255,0.4); }
+.ex-plan {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 4px;
+}
+.ex-data {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ex-point {}
+.ex-point-label { font-size: 9px; color: rgba(255,255,255,0.35); }
+.ex-point-value { font-size: 13px; font-weight: 700; }
+.ex-point-value.pru { color: #FF8FA0; }
+.ex-point-value.neutral { color: rgba(255,255,255,0.65); }
+.ex-note {
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ── COLUMN HEADERS ── */
+.col-headers {
+  display: grid;
+  grid-template-columns: 200px repeat(3,1fr);
+  border-bottom: 2px solid var(--border);
+}
+.col-blank { background: var(--cream); }
+.col-head {
+  padding: 16px 20px 14px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+}
+.col-head.pru { border-top: 4px solid var(--pru); background: #FFF5F7; }
+.col-head.aia { border-top: 4px solid #888; }
+.col-head.fwd { border-top: 4px solid #AAA; }
+.col-co {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.col-co.pru { color: var(--pru); }
+.col-co.aia { color: #666; }
+.col-co.fwd { color: #888; }
+.col-plan-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.col-plan-name.pru { color: var(--pru-dk); }
+.col-plan-name.aia { color: #444; }
+.col-plan-name.fwd { color: #666; }
+
+/* ── TABLE ── */
+.table { display: grid; grid-template-columns: 200px repeat(3,1fr); }
+
+.section-row {
+  grid-column: 1 / -1;
+  background: #EEEBE5;
+  padding: 7px 20px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.row-label {
+  background: var(--pale);
+  padding: 13px 16px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--mid);
+  border-bottom: 1px solid var(--border);
+  border-right: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.cell.pru-col { background: #FFFBFC; }
+.cell.aia-col { background: #fff; }
+.cell.fwd-col { background: #fff; }
+
+.cv { font-size: 13px; font-weight: 700; color: var(--ink); }
+.cv.pru { color: var(--pru-dk); }
+.cs { font-size: 10.5px; color: #888; }
+
+/* WIN badges */
+.win {
+  background: var(--pru);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.ok {
+  font-size: 11px;
+  color: #888;
+}
+.dim { color: #bbb; font-size: 12px; }
+
+/* Check / X */
+.chk { color: var(--green); font-size: 16px; font-weight: 700; }
+.chk-pru { color: var(--pru); font-size: 16px; font-weight: 700; }
+.x { color: #CCC; font-size: 16px; }
+.partial { color: #B07800; font-size: 16px; }
+
+/* ── STRENGTHS BANNER ── */
+.strengths {
+  background: var(--pru);
+  padding: 28px 40px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.str-left {
+  border-right: 1px solid rgba(255,255,255,0.2);
+  padding-right: 28px;
+  min-width: 160px;
+}
+.str-title-small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+.str-title-big {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+.str-title-big span { color: #FFD0D8; }
+.str-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+.str-item { display: flex; gap: 10px; align-items: flex-start; }
+.str-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+}
+.str-content {}
+.str-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.str-body {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: #111;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.footer p {
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.7;
+}
+.footer-date { font-size: 9px; color: rgba(255,255,255,0.15); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="h-eyebrow">香港儲蓄壽險市場分析</div>
+    <div class="h-title">三大保司<em>儲蓄壽險</em>比較<br>英國保誠 · 友邦 · 富衛</div>
+    <div class="h-sub">終身分紅儲蓄壽險計劃 ｜ 重點突顯保誠信守明天多元貨幣計劃優勢</div>
+  </div>
+  <div style="display:flex;gap:10px;">
+    <div class="h-badge">
+      <div class="h-badge-label">保誠成立</div>
+      <div class="h-badge-value">170+ 年</div>
+    </div>
+    <div class="h-badge">
+      <div class="h-badge-label">保費年期</div>
+      <div class="h-badge-value">3 / 5 年</div>
+    </div>
+  </div>
+</div>
+
+<!-- PREMIUM EXAMPLE BAR -->
+<div class="example-bar">
+  <div class="ex-label">
+    <div class="ex-label-text">保費示例<br>USD 100,000<br>× 5年繳付</div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-company pru">英國保誠</div>
+    <div class="ex-plan">信守明天多元貨幣計劃</div>
+    <div class="ex-data">
+      <div class="ex-point">
+        <div class="ex-point-label">已繳總保費</div>
+        <div class="ex-point-value pru">USD 500,000</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">第10年預期現金價值</div>
+        <div class="ex-point-value pru">~USD 570,000+</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">第20年預期現金價值</div>
+        <div class="ex-point-value pru">~USD 900,000+</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">預期長期IRR</div>
+        <div class="ex-point-value pru">~6%+</div>
+      </div>
+    </div>
+    <div class="ex-note">股東全資分紅計劃；股票類別投資最高70%；非保證紅利視乎投資表現</div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-company aia">友邦保險</div>
+    <div class="ex-plan">盈御多元貨幣計劃3</div>
+    <div class="ex-data">
+      <div class="ex-point">
+        <div class="ex-point-label">已繳總保費</div>
+        <div class="ex-point-value neutral">USD 500,000</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">預期IRR（100年）</div>
+        <div class="ex-point-value neutral">~6.5%</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">保證IRR（100年）</div>
+        <div class="ex-point-value neutral">0.31%</div>
+      </div>
+    </div>
+    <div class="ex-note">5年繳，美元；實際回報由AIA全權決定</div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-company fwd">富衛保險</div>
+    <div class="ex-plan">盈聚·天下壽險計劃</div>
+    <div class="ex-data">
+      <div class="ex-point">
+        <div class="ex-point-label">已繳總保費</div>
+        <div class="ex-point-value neutral">USD 500,000</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">預期IRR（100年）</div>
+        <div class="ex-point-value neutral">~7.13%</div>
+      </div>
+      <div class="ex-point">
+        <div class="ex-point-label">預期7年回本</div>
+        <div class="ex-point-value neutral">（非保證）</div>
+      </div>
+    </div>
+    <div class="ex-note">5年繳，美元；股權投資比例較高，波動較大</div>
+  </div>
+</div>
+
+<!-- COLUMN HEADERS -->
+<div class="col-headers">
+  <div class="col-blank"></div>
+  <div class="col-head pru">
+    <div class="col-co pru">英國保誠 Prudential</div>
+    <div class="col-plan-name pru">「信守明天」<br>多元貨幣計劃</div>
+  </div>
+  <div class="col-head aia">
+    <div class="col-co aia">友邦保險 AIA</div>
+    <div class="col-plan-name aia">「盈御多元<br>貨幣計劃3」</div>
+  </div>
+  <div class="col-head fwd">
+    <div class="col-co fwd">富衛保險 FWD</div>
+    <div class="col-plan-name fwd">「盈聚·天下」<br>壽險計劃</div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="table">
+
+  <!-- 基本 -->
+  <div class="section-row">基本資料</div>
+
+  <div class="row-label">保費年期</div>
+  <div class="cell pru-col"><span class="cv pru">3年 / 5年</span></div>
+  <div class="cell aia-col"><span class="ok">一次過 / 3 / 5 / 10年</span></div>
+  <div class="cell fwd-col"><span class="ok">一次過 / 2 / 3 / 5 / 10 / 18年</span></div>
+
+  <div class="row-label">貨幣選擇</div>
+  <div class="cell pru-col"><span class="cv pru">6種</span><span class="cs">港/美/英/澳/加/人民幣</span></div>
+  <div class="cell aia-col"><span class="cv">9種</span><span class="cs">+歐元/新加坡元/澳門幣</span></div>
+  <div class="cell fwd-col"><span class="cv">8種</span><span class="cs">+歐元/新加坡元</span></div>
+
+  <div class="row-label">貨幣轉換<br>最早時間</div>
+  <div class="cell pru-col"><span class="cv pru">第3年起</span></div>
+  <div class="cell aia-col"><span class="cv">第2年起</span><span class="cs">（最早）</span></div>
+  <div class="cell fwd-col"><span class="ok">第3年起</span></div>
+
+  <div class="row-label">核保要求</div>
+  <div class="cell pru-col"><span class="chk-pru">✓</span><span class="cs">毋須驗身</span></div>
+  <div class="cell aia-col"><span class="chk">✓</span><span class="cs">毋須驗身</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">毋須驗身</span></div>
+
+  <!-- 傳承 -->
+  <div class="section-row">財富傳承（保誠領先）</div>
+
+  <div class="row-label">身故賠償<br>支付方式</div>
+  <div class="cell pru-col">
+    <span class="cv pru">4種 + 市場首創</span>
+    <span class="win">市場首創</span>
+    <span class="cs">一筆過 / 分期10-40年 /<br>混合 / 升級自主傳承<br>（按12項人生事件觸發）</span>
+  </div>
+  <div class="cell aia-col"><span class="cv">靈活</span><span class="cs">月/季/半年/年分期<br>或按人生事件支付</span></div>
+  <div class="cell fwd-col"><span class="cv">5種</span><span class="cs">一筆過/定額分期<br>遞增分期/混合</span></div>
+
+  <div class="row-label">自主入息選項<br>（指定收款人）</div>
+  <div class="cell pru-col">
+    <span class="cv pru">市場首創</span>
+    <span class="win">市場首創</span>
+    <span class="cs">第5年起，定額或遞增<br>可指定家人/慈善機構</span>
+  </div>
+  <div class="cell aia-col"><span class="partial">▲</span><span class="cs">可提取復歸紅利<br>現金價值</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">第6年起每年可提取<br>已繳保費6-7%</span></div>
+
+  <div class="row-label">保單暫託人<br>（未成年保護）</div>
+  <div class="cell pru-col">
+    <span class="cv pru">最全面方案</span>
+    <span class="win">最全面</span>
+    <span class="cs">可設定指定年齡/<br>日期/人生事件接管<br>正式保單特點</span>
+  </div>
+  <div class="cell aia-col"><span class="partial">▲</span><span class="cs">保單暫管人安排<br>屬增值服務<br>非正式保單特點</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">「富傳家選項」<br>最多3位後續<br>保單權益人</span></div>
+
+  <div class="row-label">失去行為能力<br>保障</div>
+  <div class="cell pru-col">
+    <span class="cv pru">保障支付 或 轉讓</span>
+    <span class="cs">無行為能力選項<br>7種受保疾病</span>
+  </div>
+  <div class="cell aia-col">
+    <span class="cv">市場首創雙接收人</span>
+    <span class="cs">未來守護選項<br>可同時保障支付+轉讓</span>
+  </div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">失去行為能力權益<br>指定家庭成員</span></div>
+
+  <div class="row-label">保單分拆</div>
+  <div class="cell pru-col"><span class="chk-pru">✓</span><span class="cs">「開枝散葉選項」<br>保費期後每年1次</span></div>
+  <div class="cell aia-col"><span class="chk">✓</span><span class="cs">第3年起<br>可一分為二</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">第3年起<br>可分拆成2份或以上</span></div>
+
+  <!-- 保障 -->
+  <div class="section-row">額外保障</div>
+
+  <div class="row-label">意外身故<br>額外賠償</div>
+  <div class="cell pru-col"><span class="cv pru">已繳保費 ×100%</span><span class="cs">第5年前，上限USD 125,000</span></div>
+  <div class="cell aia-col"><span class="ok">已繳保費 ×100%</span><span class="cs">首年意外</span></div>
+  <div class="cell fwd-col"><span class="cv">已繳保費 ×200%</span><span class="cs">首10年（最高）</span></div>
+
+  <div class="row-label">保費緩繳<br>（人生大事）</div>
+  <div class="cell pru-col"><span class="chk-pru">✓</span><span class="cs">最長365日<br>7種人生事件</span></div>
+  <div class="cell aia-col"><span class="chk">✓</span><span class="cs">最長365日</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">保費假期選項<br>第2年起</span></div>
+
+  <div class="row-label">學業優異獎</div>
+  <div class="cell pru-col"><span class="chk-pru">✓</span><span class="cs">12項學業成就<br>最高USD 5,000（頂尖大學）</span></div>
+  <div class="cell aia-col"><span class="chk">✓</span><span class="cs">卓越成績獎</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">高達HKD 31,000<br>+初生嬰兒獎HKD 5,000-20,000</span></div>
+
+  <div class="row-label">紅利鎖定<br>（預期→保證）</div>
+  <div class="cell pru-col"><span class="chk-pru">✓</span><span class="cs">第10年起<br>最多75%，可再解鎖</span></div>
+  <div class="cell aia-col"><span class="chk">✓</span><span class="cs">第15年起<br>可鎖定及解鎖</span></div>
+  <div class="cell fwd-col"><span class="chk">✓</span><span class="cs">自動鎖定+靈活鎖定<br>2種選項</span></div>
+
+</div>
+
+<!-- PRUDENTIAL STRENGTHS -->
+<div class="strengths">
+  <div class="str-left">
+    <div class="str-title-small">保誠信守明天</div>
+    <div class="str-title-big">為何<span>選擇</span><br>保誠？</div>
+  </div>
+  <div class="str-grid">
+    <div class="str-item">
+      <div class="str-num">01</div>
+      <div class="str-content">
+        <div class="str-heading">升級自主傳承　市場首創</div>
+        <div class="str-body">根據受益人最多12個人生事件（大學畢業、結婚、生育等）靈活觸發身故賠償，無需信託，輕鬆實現財富按意願傳承。</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-num">02</div>
+      <div class="str-content">
+        <div class="str-heading">自主入息選項　市場首創</div>
+        <div class="str-body">第5年起設立自動提取指示，款項直接入指定收款人（包括子女、父母甚至慈善機構）戶口，可定額或每年遞增。</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-num">03</div>
+      <div class="str-content">
+        <div class="str-heading">保單暫託人選項　最全面方案</div>
+        <div class="str-body">專為未成年繼承人設計，可設定指定年齡、日期或人生事件後才正式接管，屬正式保單特點（非增值服務）。</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-num">04</div>
+      <div class="str-content">
+        <div class="str-heading">股東全資分紅結構　透明穩健</div>
+        <div class="str-body">股票類別投資最高70%，採用股東全資分紅計劃，投資策略更透明；品牌歷史逾170年，財務實力有目共睹。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>⚠️ 重要聲明：保費示例為假設性數字，僅供參考，並非實際報價。非保證紅利、預期IRR均非保證，視保司投資表現而定。本比較根據各保司公開資料整理，不構成任何保險或投資建議。投保前請向持牌保險中介人索取完整產品資料及條款。</p>
+  <div class="footer-date">整理日期：2026年4月</div>
+</div>
+
+</body>
+</html>
